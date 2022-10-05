@@ -43,7 +43,6 @@ button {
   justify-content: center;
   background-color: white;
   padding: 50px 50px;
-  
 }
 
 .Link-container {
@@ -65,4 +64,14 @@ button {
 
 .Logout {
   width: 200px;
+}
+
+.Login {
+  background-color: white;
+  color: darkslategrey;
+  height: 30px;
+  padding: 10px 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
