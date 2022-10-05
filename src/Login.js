@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import './App.css';
-import FormInput from './components/formInput';
+import "./App.css";
+import FormInput from "./components/formInput";
 
 const Login = () => {
   const [values, setValues] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -30,44 +30,43 @@ const Login = () => {
       required: true,
     },
   ];
-  
-  const handleSubmit = (e)=>{
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.getItem("username");
     localStorage.getItem("password");
-    
-    if(values.username === localStorage.getItem("username") && values.password === localStorage.getItem("password")) {
-      navigate('/Dashboard');
+
+    if (
+      values.username === localStorage.getItem("username") &&
+      values.password === localStorage.getItem("password")
+    ) {
+      navigate("/Dashboard");
     } else {
-      console.log('error');
-      alert('Invalid Username or Password');
+      console.log("error");
+      alert("Invalid Username or Password");
     }
-
-    };
-
-  const onChange = (e) => {
-    setValues({...values, [e.target.name]: e.target.value})
   };
 
-  console.log(values);
-  
-    return (
-      <div className='app'>
-        <form onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          {inputs.map((input) => (
-            <FormInput 
-              key={input.id} 
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-        />
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <div className="app">
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        {inputs.map((input) => (
+          <FormInput
+            key={input.id}
+            {...input}
+            value={values[input.name]}
+            onChange={onChange}
+          />
         ))}
         <button>Login</button>
       </form>
     </div>
-    );
-  };
-  
-  export default Login;
-  
+  );
+};
+
+export default Login;
