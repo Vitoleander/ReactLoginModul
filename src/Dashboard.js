@@ -1,21 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 const Dashboard = () => {
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('username');
-        localStorage.removeItem('email');
         localStorage.removeItem('password');
+
+        navigate('/');
     }
 
     return (
         <div className="app">
             <div className="Title-conatiner">
                 <h1 className="Title">Dashboard</h1>
+                <h2>Welcome! You are logged in!</h2>
             </div>
             <div className="Link-container">
-                <Link to="/" className="Link" onClick={handleLogout}>Log out</Link>
+                <button onClick={handleLogout}>Log out</button>
             </div>
         </div>
     )

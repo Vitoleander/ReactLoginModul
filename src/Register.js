@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import './App.css';
 import FormInput from './components/formInput';
@@ -12,6 +12,8 @@ const Register = () => {
       confirmPassword: ""
     });
   
+    const navigate = useNavigate();
+
     const inputs = [
       {
         id: 1,
@@ -57,14 +59,15 @@ const Register = () => {
     const handleSubmit = (e)=>{
       e.preventDefault();
       localStorage.setItem("username", values.username);
-      localStorage.setItem("email", values.email);
       localStorage.setItem("password", values.password);
+
+      navigate('/Login');
     };
   
     const onChange = (e) =>{
       setValues({...values, [e.target.name]: e.target.value})
     };
-  
+
     console.log(values);
   
     return (
@@ -79,8 +82,10 @@ const Register = () => {
               onChange={onChange} 
         />
         ))}
-        <Link to="/Login"><button>Submit</button></Link>
-      </form>
+          <button>Submit</button>
+        </form>
+
+
     </div>
     );
   };
